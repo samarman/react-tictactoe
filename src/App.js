@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+// component that takes in value and onSquareClick props
+// returns a button element that displays the value and triggers onSquareClick when clicked
+
 function Square({ value, onSquareClick }) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -7,6 +10,11 @@ function Square({ value, onSquareClick }) {
     </button>
   );
 }
+
+// takes xIsNext, squares, and onPlay props
+// it has a handleClick function that is called when a square is clicked
+// it uses the calculateWinner function to check if the game has a winner or not
+// it also renders the Square component for each square on the game board
 
 function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
@@ -27,7 +35,11 @@ function Board({ xIsNext, squares, onPlay }) {
   if (winner) {
     status = 'Winner: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    if (squares.filter(val => val === null).length === 0) {
+      status = "It's a Draw!";
+    } else {
+      status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    }
   }
 
   return (
@@ -52,6 +64,14 @@ function Board({ xIsNext, squares, onPlay }) {
   );
 }
 
+
+// uses the useState hook to manage the game's state
+// history array to keep track of the previous moves
+// a currentMove variable to keep track of the current move
+// a xIsNext variable to keep track of the next player
+// has a handlePlay function that is called when the board component triggers the onPlay function
+// jumpTo function that allows the user to navigate to any previous move
+// the Board component and a list of buttons that allow the user to navigate to any previous move
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
@@ -93,6 +113,10 @@ export default function Game() {
     </div>
   );
 }
+
+
+// a helper function that takes in an array of squares
+// if there is a winner by comparing the values of the squares in the winning combination
 
 function calculateWinner(squares) {
   const lines = [
