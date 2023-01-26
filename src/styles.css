@@ -60,15 +60,15 @@ body {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: 54px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  line-height: 64px;
+  height: 64px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 64px;
 }
 
 .board-row:after {
@@ -79,7 +79,9 @@ body {
 
 .status {
   margin-bottom: 10px;
+  font-size: larger;
 }
+
 .game {
   display: flex;
   flex-direction: row;
@@ -87,4 +89,10 @@ body {
 
 .game-info {
   margin-left: 20px;
+}
+
+.root {
+  margin: auto;
+  display: grid;
+  place-items: center;
 }

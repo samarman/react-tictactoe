@@ -35,6 +35,7 @@ function Board({ xIsNext, squares, onPlay }) {
   if (winner) {
     status = 'Winner: ' + winner;
   } else {
+    // to show a draw
     if (squares.filter(val => val === null).length === 0) {
       status = "It's a Draw!";
     } else {
